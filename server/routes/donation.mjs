@@ -1,7 +1,8 @@
 import express from "express";
 import db from "../db/conn.mjs";
-import { ObjectId } from "mongodb";
+import  ObjectId  from "mongodb";
 import createDoc from  "../document/documentsettings.mjs";
+import sendCert from "../document/emailSettings.mjs";
 
 
 const router = express.Router();
@@ -44,6 +45,7 @@ router.post("/", async (req, res, next) => {
   let collection = await db.collection("donations");
   let result = await collection.insertOne(newDocument);
   createDoc(newDocument)
+  sendCert(newDocument)
   res.send(result).status(204);
   next();
   

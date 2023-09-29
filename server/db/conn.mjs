@@ -1,4 +1,5 @@
-import { MongoClient } from "mongodb";
+import pkg from "mongodb";
+const {MongoClient} = pkg;
 
 const connectionString = process.env.ATLAS_URI || "";
 
