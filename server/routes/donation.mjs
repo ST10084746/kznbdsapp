@@ -1,6 +1,9 @@
 import express from "express";
 import db from "../db/conn.mjs";
-import { ObjectId } from "mongodb";
+import  ObjectId  from "mongodb";
+import createDoc from  "../document/documentsettings.mjs";
+import sendCert from "../document/emailSettings.mjs";
+
 
 const router = express.Router();
 
@@ -12,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 // This section will help you get a single record by id
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res, next) => {
   let collection = await db.collection("donations");
   let query = {_id: new ObjectId(req.params.id)};
   let result = await collection.findOne(query);
@@ -22,7 +25,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // This section will help you create a new record.
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
   let newDocument = {
     receipt: req.body.receipt,
     name: req.body.name,
@@ -41,7 +44,11 @@ router.post("/", async (req, res) => {
   };
   let collection = await db.collection("donations");
   let result = await collection.insertOne(newDocument);
+  createDoc(newDocument)
+  sendCert(newDocument)
   res.send(result).status(204);
+  next();
+  
 });
 
 // This section will help you update a record by id.
