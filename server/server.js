@@ -11,7 +11,7 @@ const userRouter = require("./routes/userRoute");
 const apiKeyRouter = require("./routes/apiKeyRoute");
 const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = require("./config");
 
-const connectionString = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?`;
+const connectionString = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/`;
 
 
 
