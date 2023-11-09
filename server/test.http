@@ -1,3 +1,24 @@
+
+GET  http://localhost:3000/test
+###
+POST http://localhost:3000/user/register
+Content-Type: application/json
+
+{
+    "name":"GodfreyT",
+    "email":"gt@gmail.com",
+    "password":"1234" 
+}
+###
+
+POST http://localhost:5050/user/login
+Content-Type: application/json
+
+{
+    "email":"Godfrey",
+    "password":"1234" 
+}
+###
 GET http://localhost:5050/donations
 ###
 
@@ -28,29 +49,34 @@ DELETE http://localhost:5050/donations/65416ae6c27ba33129f96389
 //////////////////////////////////////////////////////////////////////////
 
 GET http://localhost:5050/events
+x-api-key: t0ohueo3jvyqitnrtc6cf2t6c37jnv
+###
+GET http://localhost:5050/events/654177c5bf1373bab03adeeb
 ###
 
 POST http://localhost:5050/events
 Content-Type: application/json
 
 {
-    "donorName":"Godfrey",
+    "eventName":"Golf",
     "date": "10/10/23",
-    "amount": "100"
+    "image": "Image",
+    "description":"Event"
 }
 ###
 
-PATCH http://localhost:5050/events/654176b4bf1373bab03adee7
+PATCH http://localhost:5050/events/654177c5bf1373bab03adeeb
 Content-Type: application/json
 
 {
-    "donorName":"Godfrey",
-    "date": "1/10/23",
-    "amount": "100"
+    "eventName":"Golf",
+    "date": "9/10/23",
+    "image": "Image",
+    "description":"Event"
 }
 
 ###
-DELETE http://localhost:5050/events/654176b4bf1373bab03adee7
+DELETE http://localhost:5050/events/654177c5bf1373bab03adeeb
 
 
 ///////////////////////////////////////////////////////////////

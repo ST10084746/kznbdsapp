@@ -1,4 +1,6 @@
 const express = require("express");
+const checkUserAuth = require("../middleware/checkUserAuth")
+const checkApiKey = require("../middleware/checkApiKey")
 
 const eventController = require("../routeControllers/eventController")
 
@@ -6,13 +8,13 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(eventController.getAllEvents)
-    .post(eventController.createEvent)
+    .get(checkApiKey,eventController.getAllEvents)
+    .post(checkUserAuth,eventController.createEvent)
 
 router
     .route("/:id")
-    .get(eventController.getOneEvent)
-    .patch(eventController.updateEvent)
-    .delete(eventController.deleteEvent)
+    .get(checkApiKey, eventController.getOneEvent)
+    .patch(checkUserAuth,eventController.updateEvent)
+    .delete(checkUserAuth,eventController.deleteEvent)
 
 module.exports = router
