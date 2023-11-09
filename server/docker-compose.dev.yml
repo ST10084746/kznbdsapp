@@ -15,6 +15,6 @@ services:
       - NODE_ENV=development
       - MONGO_USER=godfrey
       - MONGO_PASSWORD=mypassword
-      - SESSION_SECRET=secret
+
     command: npm run dev
   
