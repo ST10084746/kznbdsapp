@@ -43,7 +43,10 @@ app.use("/user", userRouter);
 app.use("/apikey",apiKeyRouter);
 
 app.get("/test", (req, res)=>{
+
+  
   console.log(`It works. Coming from ${os.hostname} `)
+  res.json({status: "it works"})
 })
 // start the Express server
 app.listen(PORT, () => {
