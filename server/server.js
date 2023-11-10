@@ -46,7 +46,7 @@ app.get("/test", (req, res)=>{
 
   
   console.log(`It works. Coming from ${os.hostname} `)
-  res.json({status: "it works"})
+  res.status(200).json({status: "it works"})
 })
 // start the Express server
 app.listen(PORT, () => {
