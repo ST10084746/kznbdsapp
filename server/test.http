@@ -1,5 +1,5 @@
 
-GET  http://localhost:3000/test
+GET  http://102.37.136.142/test
 ###
 POST http://localhost:3000/user/register
 Content-Type: application/json
@@ -82,7 +82,7 @@ DELETE http://localhost:5050/events/654177c5bf1373bab03adeeb
 ///////////////////////////////////////////////////////////////
 ###
 
-GET http://localhost:5050/products
+GET http://localhost:3000/products
 ###
 
 POST http://localhost:5050/products

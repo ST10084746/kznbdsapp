@@ -5,10 +5,7 @@ const eventSchema = mongoose.Schema({
 
     title : {type: String, required:true},
     description : {type: String, required:true},
-    image : {
-        data: Buffer,
-        contentType: String
-    },
+    image : {type: String, required:true},
     date : {type: Date, required:true},
     
     

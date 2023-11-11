@@ -32,44 +32,42 @@ exports.signup = async(req, res)=>{
 
 exports.login = async (req, res)=>{
     let currentUser;
-    User.findOne({email: req.body.email})
-    .then(user=>{
-        if(!user)
-        {
-            return res.status(401).json({
-                status: "Failure",
-                message:"User Not Found"
+    const {email, password} = req.body;
+    try{
+        const user = await User.findOne({email})
+        if(!user){
+            return res.status(404).json({
+                status: 'failed',
+                message: "User Not Found"
             })
         }
-        currentUser = user
-        return bcrypt.compare(req.body.password, user.password)
+        currentUser = user;
+        let isCorrect =  await bcrypt.compare(req.body.password, user.password)
+        
 
-    })
-    .then(result=>{
-        if(!result)
-        {
-            return res.status(401).json({
-                status: "Aunthentication failutre",
-                message: "Password incorrect"
+        if(!isCorrect){
+            res.status(401).json({
+                status: "Authentication Failed"
+            })
+        }else{
+            const token = jwt.sign({username:currentUser.email, userid: currentUser._id},
+                'secret_this_should_be_longer_than_it_is',
+                {expiresIn: '1h'});
 
-            }); 
+            res.status(200).json({
+                status: "ok",
+                token: token
+            })
+            return res.status(204)
         }
-        const token = jwt.sign({username:currentUser.email, userid: currentUser._id},
-            'secret_this_should_be_longer_than_it_is',
-            {expiresIn: '1h'});
 
-        console.log(token)
+    } catch(error){
+        console.error("Login Error", error)
+        res.status(500).json({
+            status: "Login Failed"})
+        res.send(token);
 
-        res.status(200).json({
-            status: "success",
-            message: "Logged in",
-            token:token
+    }    
 
-        });
-    })
-    .catch(err=>{
-        console.log(err)
-
-    })
 
 }

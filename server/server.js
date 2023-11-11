@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const os = require("os")
@@ -34,7 +35,7 @@ const connectWithRetry = ()=>{
 connectWithRetry();
 
 
-app.use(express.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use("/donations", donationRouter);
 app.use("/events", eventRouter);

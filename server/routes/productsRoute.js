@@ -8,12 +8,12 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(checkApiKey, productController.getAllProducts)
+    .get( productController.getAllProducts)
     .post(checkUserAuth, productController.createProduct)
 
 router
     .route("/:id")
-    .get(checkApiKey, productController.getOneProduct)
+    .get(productController.getOneProduct)
     .patch(checkUserAuth, productController.updateProduct)
     .delete(checkUserAuth, productController.deleteProduct)
 
