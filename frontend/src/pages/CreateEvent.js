@@ -37,7 +37,7 @@ function CreateEvent() {
     async function Submit(e){
         e.preventDefault()
         const Autheader = ()=> `Bearer ${token}`
-        const req = await fetch('http://localhost:3000/events', {
+        const req = await fetch('http://102.37.136.142/events', {
             method:'POST',
             crossDomain:true,
             headers:{

@@ -9,15 +9,15 @@ const[email, setEmail] = useState('')
 
   async function loginUser(event){
     event.preventDefault();
-    const response = await fetch('http://localhost:3000/user/login', {
+    const response = await fetch('http://102.37.136.142/user/login', {
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
       },
 
       body: JSON.stringify({
-        email,
-        password,
+        email:email,
+        password: password,
       }),
     })
 
