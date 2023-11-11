@@ -9,7 +9,7 @@ const navigate = useNavigate()
 
 async function populatePosts(token){
     const Autheader = ()=> `Bearer ${token}`
-    const req = await fetch('http://localhost:3000/products', {
+    const req = await fetch('http://102.37.136.142/products', {
         method:'GET',
         headers:{
             'Authorization': Autheader(),
@@ -26,7 +26,7 @@ async function populatePosts(token){
 }
 async function handleDelete(productId){
     const Autheader = ()=> `Bearer ${localStorage.getItem('token')}`
-    const req = await fetch(`http://localhost:3000/products/${productId}`, {
+    const req = await fetch(`http://102.37.136.142/products/${productId}`, {
         method:'DELETE',
         headers:{
             'Authorization': Autheader(),

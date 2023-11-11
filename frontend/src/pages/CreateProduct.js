@@ -38,7 +38,7 @@ function CreateProduct() {
     async function Submit(e){
         e.preventDefault()
         const Autheader = ()=> `Bearer ${token}`
-        const req = await fetch('http://localhost:3000/products', {
+        const req = await fetch('http://102.37.136.142/products', {
             method:'POST',
             crossDomain:true,
             headers:{
@@ -46,10 +46,10 @@ function CreateProduct() {
                 'Authorization': Autheader(),
             },
             body: JSON.stringify({
-                image,
-                title,
-                description,
-                price,
+                image:image,
+                title :title,
+                description: description,
+                price: price,
             })
         })
 

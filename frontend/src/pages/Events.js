@@ -9,7 +9,7 @@ function Events() {
     
     async function populateEvents(token){
         const Autheader = ()=> `Bearer ${token}`
-        const req = await fetch('http://localhost:3000/events', {
+        const req = await fetch('http://102.37.136.142/events', {
             method:'GET',
             headers:{
                 'Authorization': Autheader(),
@@ -26,7 +26,7 @@ function Events() {
     }
     async function handleDelete(eventId){
         const Autheader = ()=> `Bearer ${localStorage.getItem('token')}`
-        const req = await fetch(`http://localhost:3000/events/${eventId}`, {
+        const req = await fetch(`http://102.37.136.142/events/${eventId}`, {
             method:'DELETE',
             headers:{
                 'Authorization': Autheader(),
