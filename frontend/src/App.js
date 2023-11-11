@@ -6,6 +6,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Navbar from './components/Navbar';
 import ApiKey from './pages/ApiKey';
+import Welcome from './pages/Welcome';
+import CreateProduct from './pages/CreateProduct';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CreateEvent from './pages/CreateEvent';
+import Events from './pages/Events';
 
 
 function App() {
@@ -14,10 +19,14 @@ function App() {
       
       <BrowserRouter>
         <Routes>
-          <Route path='/' Component={Products}/>
+          <Route path='/' Component={Welcome}/>
+          <Route path='/products' Component={Products}/>
+          <Route path='/createProduct' Component={CreateProduct}/>
           <Route path='/login' Component={Login}/>
           <Route path='register' Component={Register}/>
-          <Route path='/apikey' Component={ApiKey}/>
+          <Route path='/events' Component={Events}/>
+          <Route path='/createEvent' Component={CreateEvent}/>
+          
         </Routes>
       
       </BrowserRouter>

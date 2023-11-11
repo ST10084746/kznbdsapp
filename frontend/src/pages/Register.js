@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function Register() {
 
@@ -11,7 +11,7 @@ function Register() {
 
   async function registerUser(event){
     event.preventDefault();
-    const response = await fetch('http://localhost:5050/user/register', {
+    const response = await fetch('http://localhost:3000/user/register', {
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
@@ -32,30 +32,47 @@ function Register() {
   }
 
   return (
-    <div>
-        <h1>Register</h1>
-      <form onSubmit={registerUser}>
-        <input
-          value ={name}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-           placeholder="Name"/>
-           <br/>
-        <input
-          value ={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-           placeholder="Email"/>
-           <br/>
-        <input
-          value ={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-           placeholder="Password"/>
-           <br/>
-           <input type="submit" value="Register"/>
-        
-      </form>
+    <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
+        <div className='w-50 bg-white rounded p-3'>
+        <form onSubmit={registerUser}>
+          <h2>Register</h2>
+          <div className='mb-2'>
+            <label>Username</label>
+            <input className='form-control'
+                  value ={name}
+                  onChange={(e) => setName(e.target.value)}
+                  type="text"
+                  placeholder="Username"
+                  pattern=".{3,}"
+                  title="Username should have three or more characters"/>
+          </div>
+          <div className='mb-2'>
+            <label>Email</label>
+            <input className='form-control'
+                  value ={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  placeholder="Email"
+                  pattern=".{3,}"
+                  title="Email not valid"/>
+          </div>
+          <div className='mb-2'>
+            <label>Password</label>
+            <input className='form-control'
+                  value ={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  placeholder="Password"
+                  pattern=".{5,}"
+                  title="Password should have five or more characters"/>
+
+          </div> 
+          <button className='btn btn-success my-2 btn-lg w-100' type='submit'>Register</button>    
+          <Link to="/" className='btn btn-danger my-2 btn-lg w-100'> Cancel</Link>
+          
+            
+        </form>
+        </div>
     </div>
 
     

@@ -5,12 +5,14 @@ exports.getAllDonations = async (req, res, next) =>{
         const donations = await Donation.find();
 
         res.status(200).json({
+            
             status: "success",
             results: donations.length,
             data :{
                 donations,
             },
         });
+
     } catch(e){
         res.status(400).json({
             status: "fail",

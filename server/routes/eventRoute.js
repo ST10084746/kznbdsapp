@@ -8,12 +8,12 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(checkApiKey,eventController.getAllEvents)
+    .get(eventController.getAllEvents)
     .post(checkUserAuth,eventController.createEvent)
 
 router
     .route("/:id")
-    .get(checkApiKey, eventController.getOneEvent)
+    .get(eventController.getOneEvent)
     .patch(checkUserAuth,eventController.updateEvent)
     .delete(checkUserAuth,eventController.deleteEvent)
 

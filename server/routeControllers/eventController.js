@@ -6,11 +6,10 @@ exports.getAllEvents = async (req, res, next) =>{
         const events = await Event.find();
 
         res.status(200).json({
-            status: "success",
+            status: "ok",
             results: events.length,
-            data :{
-                events,
-            },
+            events : events,
+        
         });
     } catch(e){
         res.status(400).json({
@@ -25,10 +24,8 @@ exports.getOneEvent = async (req, res, next)=>{
         const event = await Event.findById(req.params.id);
 
         res.status(200).json({
-            status: "success",
-            data :{
-                event,
-            },
+            status: "ok",
+            event : event
         });
     } catch(e){
         res.status(400).json({
@@ -44,20 +41,18 @@ exports.createEvent = async (req, res, next)=>{
                 const event =  Event.create({
                     title: req.body.title,
                     description: req.body.description,
-                    image: {
-                        data: req.body.filename,
-                        contentType: 'image/png'
-                    },
+                    image: req.body.image,
                     date: req.body.date
                 });
 
                 res.status(200).json({
-                    status: "success",
+                    status: "ok",
                     data :{
                         event,
                     },
                 });
     
+            
         })
     }catch(e){
     res.status(400).json({
@@ -91,7 +86,7 @@ exports.updateEvent = async (req, res, next)=>{
         });
 
         res.status(200).json({
-            status: "success",
+            status: "ok",
             data :{
                 event,
             },
@@ -110,7 +105,7 @@ exports.deleteEvent = async (req, res, next)=>{
         const event = await Event.findByIdAndDelete(req.params.id);
 
         res.status(200).json({
-            status: "success",
+            status: "ok",
 
         });
     } catch(e){
