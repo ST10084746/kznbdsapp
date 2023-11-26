@@ -11,9 +11,7 @@ async function populatePosts(token){
     const Autheader = ()=> `Bearer ${token}`
     const req = await fetch('http://102.37.136.142/products', {
         method:'GET',
-        headers:{
-            'Authorization': Autheader(),
-        },
+        
     })
 
     const data = await req.json();
