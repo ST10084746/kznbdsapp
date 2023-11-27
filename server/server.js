@@ -44,8 +44,6 @@ app.use("/user", userRouter);
 app.use("/apikey",apiKeyRouter);
 
 app.get("/test", (req, res)=>{
-
-  
   console.log(`It works. Coming from ${os.hostname} `)
   res.status(200).json({status: "it works"})
 })
