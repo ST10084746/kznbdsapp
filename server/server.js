@@ -10,6 +10,8 @@ const eventRouter = require("./routes/eventRoute");
 const productRouter = require("./routes/productsRoute");
 const userRouter = require("./routes/userRoute");
 const apiKeyRouter = require("./routes/apiKeyRoute");
+const signRouter = require("./routes/signRoute")
+const phraseRouter = require("./routes/phraseRoute");
 const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = require("./config");
 
 const connectionString = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/`;
@@ -41,6 +43,8 @@ app.use("/donations", donationRouter);
 app.use("/events", eventRouter);
 app.use("/products", productRouter);
 app.use("/user", userRouter);
+app.use("/signs", signRouter);
+app.use("/phrases", phraseRouter);
 app.use("/apikey",apiKeyRouter);
 
 app.get("/test", (req, res)=>{
