@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { SERVER_IP } from './IP';
 
 
 function CreateProduct() {
@@ -38,7 +39,7 @@ function CreateProduct() {
     async function Submit(e){
         e.preventDefault()
         const Autheader = ()=> `Bearer ${token}`
-        const req = await fetch('http://102.37.136.142/products', {
+        const req = await fetch(`http://${SERVER_IP}/products`, {
             method:'POST',
             crossDomain:true,
             headers:{

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { SERVER_IP } from './IP';
 
 function Login() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const[email, setEmail] = useState('')
 
   async function loginUser(event){
     event.preventDefault();
-    const response = await fetch('http://102.37.136.142/user/login', {
+    const response = await fetch(`http://${SERVER_IP}/user/login`, {
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
