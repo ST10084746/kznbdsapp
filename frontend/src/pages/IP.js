@@ -1,4 +1,5 @@
 module.exports = {
-    SERVER_IP: "localhost:3000" ,
+    SERVER_IP: "102.37.136.142" ,
+    ALTERNATE: "102.37.136.142"
     
 }
