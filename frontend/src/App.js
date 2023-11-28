@@ -11,6 +11,10 @@ import CreateProduct from './pages/CreateProduct';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateEvent from './pages/CreateEvent';
 import Events from './pages/Events';
+import CreateSigns from './pages/CreateSigns';
+import Signs from './pages/Signs';
+import CreatePhrase from './pages/CreatePhrase';
+import Phrases from './pages/Phrases';
 
 
 function App() {
@@ -26,6 +30,10 @@ function App() {
           <Route path='register' Component={Register}/>
           <Route path='/events' Component={Events}/>
           <Route path='/createEvent' Component={CreateEvent}/>
+          <Route path='/createSign' Component={CreateSigns}/>
+          <Route path='/signs' Component={Signs}/>
+          <Route path='createPhrase' Component={CreatePhrase}/>
+          <Route path='phrases' Component={Phrases}/>
           
         </Routes>
       
