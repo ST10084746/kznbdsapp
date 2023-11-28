@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { SERVER_IP } from './IP'
 
 function Products() {
   const [products, setProducts] =useState([{
@@ -9,7 +10,7 @@ const navigate = useNavigate()
 
 async function populatePosts(token){
     const Autheader = ()=> `Bearer ${token}`
-    const req = await fetch('http://102.37.136.142/products', {
+    const req = await fetch(`http://${SERVER_IP}/products`, {
         method:'GET',
         
     })
@@ -24,7 +25,7 @@ async function populatePosts(token){
 }
 async function handleDelete(productId){
     const Autheader = ()=> `Bearer ${localStorage.getItem('token')}`
-    const req = await fetch(`http://102.37.136.142/products/${productId}`, {
+    const req = await fetch(`http://${SERVER_IP}/products/${productId}`, {
         method:'DELETE',
         headers:{
             'Authorization': Autheader(),
@@ -59,6 +60,7 @@ return (
     <div className='w-50 bg-white rounded p-3'>
         <Link to="/createProduct" className='btn btn-success'> Add +</Link>
         <Link to="/events" className='btn btn-success'> Show Events</Link>
+        <Link to="/signs" className='btn btn-success'> Show Signs</Link>
         <table className='table'>
             <thead>
                 <tr>

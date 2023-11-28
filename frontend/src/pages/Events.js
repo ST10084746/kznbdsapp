@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { SERVER_IP } from './IP';
 
 function Events() {
     const [events, setEvents] =useState([{
@@ -9,7 +10,7 @@ function Events() {
     
     async function populateEvents(token){
         const Autheader = ()=> `Bearer ${token}`
-        const req = await fetch('http://102.37.136.142/events', {
+        const req = await fetch(`http://${SERVER_IP}/events`, {
             method:'GET',
             headers:{
                 'Authorization': Autheader(),
@@ -26,7 +27,7 @@ function Events() {
     }
     async function handleDelete(eventId){
         const Autheader = ()=> `Bearer ${localStorage.getItem('token')}`
-        const req = await fetch(`http://102.37.136.142/events/${eventId}`, {
+        const req = await fetch(`http://${SERVER_IP}/events/${eventId}`, {
             method:'DELETE',
             headers:{
                 'Authorization': Autheader(),

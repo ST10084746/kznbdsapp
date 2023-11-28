@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { SERVER_IP } from './IP'
 
 function Register() {
 
@@ -11,7 +12,7 @@ function Register() {
 
   async function registerUser(event){
     event.preventDefault();
-    const response = await fetch('http://102.37.136.142/user/register', {
+    const response = await fetch(`http://${SERVER_IP}/user/register`, {
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',

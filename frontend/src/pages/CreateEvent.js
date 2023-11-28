@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { SERVER_IP } from './IP'
 
 function CreateEvent() {
     const[image, setImage] = useState('')
@@ -37,7 +38,7 @@ function CreateEvent() {
     async function Submit(e){
         e.preventDefault()
         const Autheader = ()=> `Bearer ${token}`
-        const req = await fetch('http://102.37.136.142/events', {
+        const req = await fetch(`http://${SERVER_IP}/events`, {
             method:'POST',
             crossDomain:true,
             headers:{

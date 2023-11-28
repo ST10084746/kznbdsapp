@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import {useNavigate, Link } from 'react-router-dom'
+import { SERVER_IP } from './IP'
 
 function Signs() {
     const [signs, setSigns] =useState([{
@@ -9,7 +10,7 @@ function Signs() {
     
     async function populateSigns(token){
         const Autheader = ()=> `Bearer ${token}`
-        const req = await fetch('http://102.37.136.142/signs', {
+        const req = await fetch(`http://${SERVER_IP}/signs`, {
             method:'GET',
             headers:{
                 'Authorization': Autheader(),
@@ -26,7 +27,7 @@ function Signs() {
     }
     async function handleDelete(eventId){
         const Autheader = ()=> `Bearer ${localStorage.getItem('token')}`
-        const req = await fetch(`http://102.37.136.142/signs/${eventId}`, {
+        const req = await fetch(`http://${SERVER_IP}/signs/${eventId}`, {
             method:'DELETE',
             headers:{
                 'Authorization': Autheader(),
@@ -63,8 +64,9 @@ function Signs() {
     return (
     <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
         <div className='w-50 bg-white rounded p-3'>
-            <Link to="/createEvent" className='btn btn-success'> Add +</Link>
+            <Link to="/createSign" className='btn btn-success'> Add +</Link>
             <Link to="/products" className='btn btn-success'> Show Products</Link>
+            <Link to="/phrases" className='btn btn-success'> Show Phrases</Link>
             <table className='table'>
                 <thead>
                     <tr>

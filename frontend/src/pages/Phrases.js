@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { SERVER_IP } from './IP';
 
 function Phrases() {
     const [phrases, setPhrases] =useState([{
@@ -9,7 +10,7 @@ function Phrases() {
     
     async function populatePhrases(token){
         const Autheader = ()=> `Bearer ${token}`
-        const req = await fetch('http://102.37.136.142/phrases', {
+        const req = await fetch(`http://${SERVER_IP}/phrases`, {
             method:'GET',
             headers:{
                 'Authorization': Autheader(),
@@ -26,7 +27,7 @@ function Phrases() {
     }
     async function handleDelete(eventId){
         const Autheader = ()=> `Bearer ${localStorage.getItem('token')}`
-        const req = await fetch(`http://102.37.136.142/phrases/${eventId}`, {
+        const req = await fetch(`http://${SERVER_IP}/phrases/${eventId}`, {
             method:'DELETE',
             headers:{
                 'Authorization': Autheader(),
