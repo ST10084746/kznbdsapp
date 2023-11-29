@@ -40,7 +40,6 @@ exports.createPhrase = async (req, res, next)=>{
         upload(req, res, (err)=>{
                 const phrase =  Phrase.create({
                     title: req.body.title,
-                    description: req.body.description,
                     image: req.body.image,
                     
                 });

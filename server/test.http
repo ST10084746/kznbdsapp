@@ -51,7 +51,7 @@ DELETE http://localhost:5050/donations/65416ae6c27ba33129f96389
 GET http://localhost:5050/events
 x-api-key: t0ohueo3jvyqitnrtc6cf2t6c37jnv
 ###
-GET http://localhost:5050/events/654177c5bf1373bab03adeeb
+GET http://102.37.136.142/phrases
 ###
 
 POST http://localhost:5050/events

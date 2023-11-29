@@ -72,7 +72,6 @@ function Signs() {
                     <tr>
                         <th>Image</th>
                         <th>Title</th>
-                        <th>Description</th>
                         
     
                     </tr>
@@ -86,7 +85,6 @@ function Signs() {
                                     <img width={100} height={100} alt='sign' src={'../reg No.PNG'}/>:
                                     <img width={100} height={100} alt='sign' src={sign.image}/>}</td>
                                 <td>{sign.title}</td>
-                                <td>{sign.description}</td>
                                 <td><button className='btn btn-danger' onClick={(e)=>handleDelete(sign._id)}>Delete</button></td>
                             </tr>
                             

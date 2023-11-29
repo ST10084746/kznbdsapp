@@ -40,7 +40,6 @@ exports.createSign = async (req, res, next)=>{
         upload(req, res, (err)=>{
                 const sign =  Sign.create({
                     title: req.body.title,
-                    description: req.body.description,
                     image: req.body.image,
                     
                 });

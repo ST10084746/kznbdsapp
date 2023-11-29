@@ -6,7 +6,6 @@ import { SERVER_IP } from './IP'
 function CreateSigns() {
     const[image, setImage] = useState('')
     const[title, setTitle] = useState('')
-    const[description, setDescription] = useState('')
     const navigate =  useNavigate();
     const token = localStorage.getItem('token');
 
@@ -47,7 +46,6 @@ function CreateSigns() {
             body: JSON.stringify({
                 image,
                 title,
-                description,
                 
             })
         })
@@ -80,18 +78,6 @@ function CreateSigns() {
                       pattern=".{3,}"
                       title="Post title should have three or more characters"/>
                 </div>
-                <div className='mb-2'>
-                    <label htmlFor=''>Content</label>
-                    <input
-                     type='text'
-                     placeholder='Description'
-                      className='form-control'
-                     onChange={(e)=> setDescription(e.target.value)}
-                     value={description}
-                     pattern=".{1,}"
-                      title="Post content should have ten or more characters"/>
-                </div>
-                
                 <div className='mb-2'>
                     <label htmlFor=''>Title</label>
                     <input
