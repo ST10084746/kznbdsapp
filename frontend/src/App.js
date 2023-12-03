@@ -15,6 +15,7 @@ import CreateSigns from './pages/CreateSigns';
 import Signs from './pages/Signs';
 import CreatePhrase from './pages/CreatePhrase';
 import Phrases from './pages/Phrases';
+import Section18A from './pages/Section18A';
 
 
 function App() {
@@ -32,8 +33,9 @@ function App() {
           <Route path='/createEvent' Component={CreateEvent}/>
           <Route path='/createSign' Component={CreateSigns}/>
           <Route path='/signs' Component={Signs}/>
-          <Route path='createPhrase' Component={CreatePhrase}/>
-          <Route path='phrases' Component={Phrases}/>
+          <Route path='/createPhrase' Component={CreatePhrase}/>
+          <Route path='/phrases' Component={Phrases}/>
+          <Route path='/section18a' Component={Section18A}/>
           
         </Routes>
       
