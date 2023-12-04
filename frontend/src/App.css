@@ -2,6 +2,14 @@ ul li{
   font-size:12px;
  }
 
+ .window{
+  display: flex;
+  background-color: #d5d1defe;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+ }
+
 
 /*main{
   font-family: 'Times New Roman', Times, serif;
@@ -52,6 +60,8 @@ ul li{
   
   
 }
+
+
 
 @page {
   size: A4;

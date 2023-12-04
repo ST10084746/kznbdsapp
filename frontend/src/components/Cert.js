@@ -46,7 +46,7 @@ used exclusively for the objects of KZN BLIND &DEAF SOCIETY in carrying out publ
              DONOR NAME: {name}               
         </div>
         <div className='d-flex my-1'>
-            <div className='d-flex border border-dark  me-1 px-1 w-50 ' /*style={{width:"180px"}}*/ >  
+            <div className='d-flex border border-dark  me-1 px-1' style={{width:"180px"}} >  
                 ADDRESS OF DONOR:
             </div>
             <div className='border border-dark flex-grow-1  px-1'>

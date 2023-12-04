@@ -19,7 +19,7 @@ function App() {
       
       <BrowserRouter>
         <Routes>
-          <Route path='/' Component={Welcome}/>
+          <Route path='/' Component={Login}/>
           <Route path='/products' Component={Products}/>
           <Route path='/login' Component={Login}/>
           <Route path='register' Component={Register}/>

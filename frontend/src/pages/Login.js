@@ -35,7 +35,7 @@ const[email, setEmail] = useState('')
     console.log(data);
   }
   return (
-    <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
+    <div className='window'>
       <div className='w-50 bg-white rounded p-3'>
         <form onSubmit={loginUser}>
           <h2>Login</h2>
