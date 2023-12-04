@@ -2,11 +2,15 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import {useNavigate, Link } from 'react-router-dom'
 import { SERVER_IP } from './IP'
+import Header from '../components/Header'
+import Sidebar from '../components/Sidebar'
+import AddSign from '../components/AddSign'
 
 function Signs() {
     const [signs, setSigns] =useState([{
     }])
     const navigate = useNavigate()
+    const token = localStorage.getItem('token');
     
     async function populateSigns(token){
         const Autheader = ()=> `Bearer ${token}`
@@ -23,6 +27,36 @@ function Signs() {
         }
         else{
             alert(data.error)
+        }
+    }
+
+    async function CreateSign(title, image){
+        const Autheader = ()=> `Bearer ${token}`
+        const req = await fetch(`http://${SERVER_IP}/signs`, {
+            method:'POST',
+            crossDomain:true,
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': Autheader(),
+            },
+            body: JSON.stringify({
+                image,
+                title,
+                
+            })
+        })
+
+        const data = await req.json();
+        if(data.status ==='ok'){
+            navigate('/signs')
+        }
+        else if(data.status==='fail'){
+            alert("Failed to create Product")
+            navigate('/login')
+        }
+        else{
+            alert('invalid Token')
+            navigate('/login')
         }
     }
     async function handleDelete(eventId){
@@ -60,42 +94,49 @@ function Signs() {
             }
         }
     
-    ,[])
+    )
     return (
-    <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-        <div className='w-50 bg-white rounded p-3'>
-            <Link to="/createSign" className='btn btn-success'> Add +</Link>
-            <Link to="/products" className='btn btn-success'> Show Products</Link>
-            <Link to="/phrases" className='btn btn-success'> Show Phrases</Link>
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Title</th>
-                        
-    
-                    </tr>
-    
-                </thead>
-                <tbody>
-                    {
-                        signs.map((sign)=>{
-                            return <tr>
-                                <td>{sign.image===''|| sign.image===null?
-                                    <img width={100} height={100} alt='sign' src={'../reg No.PNG'}/>:
-                                    <img width={100} height={100} alt='sign' src={sign.image}/>}</td>
-                                <td>{sign.title}</td>
-                                <td><button className='btn btn-danger' onClick={(e)=>handleDelete(sign._id)}>Delete</button></td>
+    <div className='grid-container'>
+        <Header/>
+        <Sidebar/>
+        <main className='table-home'>
+            <div className='table'>
+                <section className='table-header'>
+                    <h1>Signs</h1>
+                    <AddSign CreateSign = {CreateSign}/>
+                </section>
+                <section className='table-body'>
+                    <table >
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Actions</th>
                             </tr>
-                            
-                        })
-                    }
-    
-                </tbody>
+            
+                        </thead>
+                        <tbody>
+                            {
+                                signs.map((sign)=>{
+                                    return <tr>
+                                        <td>{sign.image===''|| sign.image===null?
+                                            <img width={100} height={100} alt='sign' src={'../reg No.PNG'}/>:
+                                            <img width={100} height={100} alt='sign' src={sign.image}/>}</td>
+                                        <td>{sign.title}</td>
+                                        <td><button className='btn btn-danger' onClick={(e)=>handleDelete(sign._id)}>Delete</button></td>
+                                    </tr>
+                                    
+                                })
+                            }
+            
+                        </tbody>
+                    
+                    </table>
                 
-            </table>
-    
-        </div>
+                </section>
+
+            </div>      
+        </main>
     </div>
     )
     

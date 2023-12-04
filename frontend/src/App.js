@@ -16,6 +16,7 @@ import Signs from './pages/Signs';
 import CreatePhrase from './pages/CreatePhrase';
 import Phrases from './pages/Phrases';
 import Section18A from './pages/Section18A';
+import Home from './pages/Home';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path='/createPhrase' Component={CreatePhrase}/>
           <Route path='/phrases' Component={Phrases}/>
           <Route path='/section18a' Component={Section18A}/>
+          <Route path='/home' Component={Home}/>
           
         </Routes>
       

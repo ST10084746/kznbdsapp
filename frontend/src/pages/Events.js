@@ -2,11 +2,16 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { SERVER_IP } from './IP';
+import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
+import AddEvent from '../components/AddEvent';
 
 function Events() {
     const [events, setEvents] =useState([{
     }])
+   
     const navigate = useNavigate()
+    const token = localStorage.getItem('token');
     
     async function populateEvents(token){
         const Autheader = ()=> `Bearer ${token}`
@@ -23,6 +28,36 @@ function Events() {
         }
         else{
             alert(data.error)
+        }
+    }
+    async function CreateEvent(title, image, description, date){
+        const Autheader = ()=> `Bearer ${token}`
+        const req = await fetch(`http://${SERVER_IP}/events`, {
+            method:'POST',
+            crossDomain:true,
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': Autheader(),
+            },
+            body: JSON.stringify({
+                image,
+                title,
+                description,
+                date,
+            })
+        })
+
+        const data = await req.json();
+        if(data.status ==='ok'){
+            populateEvents()
+        }
+        else if(data.status==='fail'){
+            alert("Failed to create Product")
+            navigate('/login')
+        }
+        else{
+            alert('invalid Token')
+            navigate('/login')
         }
     }
     async function handleDelete(eventId){
@@ -60,45 +95,60 @@ function Events() {
             }
         }
     
-    ,[])
+    )
     return (
-    <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-        <div className='w-50 bg-white rounded p-3'>
-            <Link to="/createEvent" className='btn btn-success'> Add +</Link>
-            <Link to="/products" className='btn btn-success'> Show Products</Link>
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Date</th>
-    
-                    </tr>
-    
-                </thead>
-                <tbody>
-                    {
-                        events.map((event)=>{
-                            return <tr>
-                                <td>{event.image===''|| event.image===null?
-                                    <img width={100} height={100} alt='product' src={'../reg No.PNG'}/>:
-                                    <img width={100} height={100} alt='product' src={event.image}/>}</td>
-                                <td>{event.title}</td>
-                                <td>{event.description}</td>
-                                <td>{event.date}</td>
-                                <td><button className='btn btn-danger' onClick={(e)=>handleDelete(event._id)}>Delete</button></td>
-                            </tr>
-                            
-                        })
-                    }
-    
-                </tbody>
+        <div className='grid-container'>
+            <Header/>
+            <Sidebar/>
+            <main className='table-home'>
+            <div className='table'>
+                <section className='table-header'>
+                    <h1>Events</h1>
+                    
+                    <AddEvent CreateEvent = {CreateEvent}/>
+                </section>
+                <section className='table-body'>
+                    <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
                 
-            </table>
-    
+                                </tr>
+                
+                            </thead>
+                            <tbody>
+                                {
+                                    events.map((event)=>{
+                                        return <tr>
+                                            <td>{event.image===''|| event.image===null?
+                                                <img width={100} height={100} alt='product' src={'../reg No.PNG'}/>:
+                                                <img width={100} height={100} alt='product' src={event.image}/>}</td>
+                                            <td>{event.title}</td>
+                                            <td>{event.description}</td>
+                                            <td>{event.date}</td>
+                                            <td><button className='btn btn-danger' onClick={(e)=>handleDelete(event._id)}>Delete</button></td>
+                                        </tr>
+                                        
+                                    })
+                                }
+                
+                            </tbody>
+                            
+                    </table>
+
+                </section>
+            
+                </div>
+
+        </main>
+
         </div>
-    </div>
+        
+    
     )
 }
 

@@ -26,7 +26,7 @@ const[email, setEmail] = useState('')
     if(data.token){
       localStorage.setItem('token', data.token)
       alert('Login Successful')
-      navigate('/products')
+      navigate('/home')
     }
     else{
       alert('Login Unuccessful')
