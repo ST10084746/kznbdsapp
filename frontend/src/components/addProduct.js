@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import CreateEvent from '../pages/CreateEvent';
 
 function AddProduct(props) {
   const [show, setShow] = useState(false);
