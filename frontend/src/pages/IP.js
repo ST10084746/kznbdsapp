@@ -1,5 +1,5 @@
-export const SERVER_IP= "localhost:3000" ;
-//export const SERVER_IP= "102.37.136.142" ;
+export const SERVER_IP= "102.37.136.142" ;
+
     
     
 

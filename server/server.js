@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const helmet = require('helmet')
 const morgan = require('morgan')
+const helmet = require('helmet')
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -24,9 +24,9 @@ const connectionString = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:
 const PORT = process.env.PORT || 5050;
 const app = express();
 app.use(cors());
+app.enable("trust proxy");
 app.use(helmet());
 app.use(morgan('dev'));
-app.enable("trust proxy")
 
 const connectWithRetry = ()=>{
   mongoose.connect(connectionString, {

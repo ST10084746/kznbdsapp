@@ -14,6 +14,7 @@ function Register() {
     event.preventDefault();
     const response = await fetch(`http://${SERVER_IP}/user/register`, {
       method: 'POST',
+      crossDomain:true,
       headers:{
         'Content-Type': 'application/json',
       },
