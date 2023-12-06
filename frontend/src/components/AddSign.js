@@ -56,12 +56,13 @@ function AddSign(props) {
                       className='form-control'
                        value={title}
                       onChange={(e)=> setTitle(e.target.value)}
-                      pattern=".{3,}"
-                      title="Post title should have three or more characters"/>
+                      pattern=".{1,}"
+                      title="Post title should have one or more characters"/>
                 </div>
                 <div className='mb-2'>
                     <label htmlFor=''>Image</label>
                     <input
+                        required
                         accept='image/*'
                         type='file'
                         className='form-control'

@@ -58,20 +58,7 @@ exports.createSign = async (req, res, next)=>{
         status: "fail",
     });}
 
-    /*try{
-        const event = await Event.create(req.body);
-
-        res.status(200).json({
-            status: "success",
-            data :{
-                event,
-            },
-        });
-    } catch(e){
-        res.status(400).json({
-            status: "fail",
-        });
-    }*/
+    
 
     
 

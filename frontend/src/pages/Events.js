@@ -123,13 +123,15 @@ function Events() {
                             <tbody>
                                 {
                                     events.map((event)=>{
+                                        const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+                                        const date = new Date(event.date).toLocaleDateString('en-us', options)
                                         return <tr>
                                             <td>{event.image===''|| event.image===null?
                                                 <img width={100} height={100} alt='product' src={'../reg No.PNG'}/>:
                                                 <img width={100} height={100} alt='product' src={event.image}/>}</td>
                                             <td>{event.title}</td>
                                             <td>{event.description}</td>
-                                            <td>{event.date}</td>
+                                            <td>{date}</td>
                                             <td><button className='btn btn-danger' onClick={(e)=>handleDelete(event._id)}>Delete</button></td>
                                         </tr>
                                         

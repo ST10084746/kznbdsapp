@@ -1,6 +1,6 @@
 const express = require("express");
 const checkUserAuth = require("../middleware/checkUserAuth")
-const checkApiKey = require("../middleware/checkApiKey")
+
 
 const phraseController = require("../routeControllers/phraseController")
 

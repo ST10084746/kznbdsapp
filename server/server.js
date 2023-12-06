@@ -12,7 +12,7 @@ const donationRouter = require("./routes/donationRoute");
 const eventRouter = require("./routes/eventRoute");
 const productRouter = require("./routes/productsRoute");
 const userRouter = require("./routes/userRoute");
-const apiKeyRouter = require("./routes/apiKeyRoute");
+
 const signRouter = require("./routes/signRoute")
 const phraseRouter = require("./routes/phraseRoute");
 const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = require("./config");
@@ -50,7 +50,7 @@ app.use("/products", productRouter);
 app.use("/user", userRouter);
 app.use("/signs", signRouter);
 app.use("/phrases", phraseRouter);
-app.use("/apikey",apiKeyRouter);
+
 
 app.get("/test", (req, res)=>{
   console.log(`It works. Coming from ${os.hostname} `)

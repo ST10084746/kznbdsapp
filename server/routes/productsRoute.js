@@ -2,7 +2,6 @@ const express = require("express");
 
 const productController = require("../routeControllers/productController");
 const checkUserAuth = require("../middleware/checkUserAuth")
-const checkApiKey = require("../middleware/checkApiKey")
 
 const router = express.Router();
 
