@@ -1,4 +1,4 @@
- #KZN BDS Server V2  MERN
+# KZN BDS Server V2  MERN
 ***
 github repository : https://github.com/ST10084746/kznbdsapp.git
 
@@ -17,7 +17,7 @@ github repository : https://github.com/ST10084746/kznbdsapp.git
 
 ## Technologies 
 ### Software 
-1. Visual Studio Code V17.1.0
+1. Visual Studio Code V 1.84
 2. Git version 2.35.1.windows.2
 3. Javascript
 4. React.js
